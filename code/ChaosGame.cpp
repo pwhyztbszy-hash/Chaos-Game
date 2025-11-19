@@ -17,7 +17,7 @@ int main()
 	RenderWindow window(vm, "Chaos Game!!", Style::Default);
 
 	Font font;
-	if (!font.loadFromFile("arial.ttf"))
+	if (!font.loadFromFile("fonts/Roboto-Italic.ttf"))
 	{
     cout << "ERROR: Could not load arial.ttf" << endl;
     return 1;
