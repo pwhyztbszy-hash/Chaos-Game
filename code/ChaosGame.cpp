@@ -15,6 +15,20 @@ int main()
 	VideoMode vm(1920, 1080);
 	// Create and open a window for the game
 	RenderWindow window(vm, "Chaos Game!!", Style::Default);
+
+	/*sf::Font font;
+	if (!font.loadFromFile("arial.ttf"))
+	{
+    cout << "ERROR: Could not load arial.ttf" << endl;
+    return 1;
+	}
+
+	sf::Text instructions;
+	instructions.setFont(font);
+	instructions.setCharacterSize(24);
+	instructions.setFillColor(sf::Color::White);
+	instructions.setPosition(10, 10);
+	instructions.setString("Click 3 points to place triangle vertices");*/
 	
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
