@@ -28,7 +28,7 @@ int main()
 	instructions.setCharacterSize(24);
 	instructions.setFillColor(sf::Color::White);
 	instructions.setPosition(10, 10);
-	instructions.setString("Click 3 points to place triangle vertices");
+	instructions.setString("Click 3 points to place triangle");
 	
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
