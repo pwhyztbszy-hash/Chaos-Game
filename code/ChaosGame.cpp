@@ -132,11 +132,11 @@ int main()
 		for(int i = 0; i < points.size(); i++)
 		 {
 
-		 RectangleShape dot(Vector2f(2,2));
+		 RectangleShape dot(Vector2f(3,3));
 	
 		 dot.setPosition(Vector2f(points[i].x, points[i].y));
 	
-		 dot.setFillColor(Color::Blue);
+		 dot.setFillColor(Color::White);
 	
 		 window.draw(dot);
 	
