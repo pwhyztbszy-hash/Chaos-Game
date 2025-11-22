@@ -89,17 +89,24 @@ int main()
         */
         if(points.size() > 0)
         {
-            for (int i = 0; i < 100; i++)
-            {
-                int r = rand() % 3; 
-                Vector2f last = points.back(); 
-                Vector2f v = vertices[r]; 
-                Vector2f mid(
-                    (last.x + v.x) / 2,
-                    (last.y + v.y) / 2
-                );
-                points.push_back(mid);  
-            }
+            ///generate more point(s)
+			///select random vertex
+			///calculate midpoint between random vertex and the last point in the vector
+			///push back the newly generated coord.
+			/// 
+			lastPoint = points[points.size() - 1];
+
+			randPoint = {
+				rand() % 1920 + 1,
+				rand() % 1080 + 1
+			};
+
+			newPoint = {
+				(lastPoint.x + randPoint.x) / 2,
+				(lastPoint.y + randPoint.x) / 2
+			};
+
+			points.push_back(newPoint);
         }
 
         /*
