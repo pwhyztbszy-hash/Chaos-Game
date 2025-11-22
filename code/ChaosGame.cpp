@@ -132,10 +132,18 @@ int main()
 		 }
 		
 		 ///TODO:  Draw points
-		Vertex line[] = { Vertex(lastPoint), Vertex(newPoint) };
+		for(int i = 0; i < vertices.size(); i++)
+		 {
 
-		window.draw(line, 2, Lines);
-		window.display();
+		 RectangleShape dot(Vector2f(10,10));
+	
+		 dot.setPosition(Vector2f(vertices[i].x, vertices[i].y));
+	
+		 dot.setFillColor(Color::Blue);
+	
+		 window.draw(dot);
+	
+		 }
 		
 		
 		 window.display();
