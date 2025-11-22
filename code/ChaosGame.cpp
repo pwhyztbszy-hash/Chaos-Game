@@ -84,7 +84,7 @@ int main()
 
         /*
         ****************************************
-        Update (Chaos Game Algorithm)
+        Update 
         ****************************************
         */
         if(points.size() > 0)
@@ -115,24 +115,17 @@ int main()
         ****************************************
         */
         window.clear();
+		for (int i = 0; i < vertices.size(); i++)
+		{
+			RectangleShape rect(Vector2f(10, 10));
+			rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
+			rect.setFillColor(Color::Blue);
+			window.draw(rect);
+		}
+		///TODO:  Draw points
+		Vertex line[] = { Vertex(lastPoint), Vertex(newPoint) };
 
-        window.draw(instructions);
-
-        // Draws the triangle
-        for(size_t i = 0; i < vertices.size(); i++)
-        {
-            RectangleShape rectangle(Vector2f(10,10));
-            rectangle.setPosition(vertices[i].x, vertices[i].y);
-            rectangle.setFillColor(Color::White);
-            window.draw(rectangle);
-        }
-
-        // Draws the chaos points
-        for(size_t i = 0; i < points.size(); i++)
-        {
-            
-        }
-
-        window.display();
+		window.draw(line, 2, Lines);
+		window.display();
     }
 }
