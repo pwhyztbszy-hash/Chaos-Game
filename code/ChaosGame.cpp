@@ -123,10 +123,7 @@ int main()
         // Draws the chaos points
         for(size_t i = 0; i < points.size(); i++)
         {
-            RectangleShape dot(Vector2f(2, 2));
-            dot.setPosition(points[i]);
-            dot.setFillColor(Color::White);
-            window.draw(dot);
+            
         }
 
         window.display();
