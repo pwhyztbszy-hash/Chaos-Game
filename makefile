@@ -1,10 +1,15 @@
-SRC_DIR := .
+SRC_DIR := ./code
 OBJ_DIR := .
 SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
-LDFLAGS := -L/opt/homebrew/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-CXXFLAGS := -g -Wall -fpermissive -std=c++17 -I/opt/homebrew/include
-TARGET := triangle.out
+
+# Linux SFML link flags
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+# Linux include path (SFML installs here)
+CXXFLAGS := -g -Wall -fpermissive -std=c++17
+
+TARGET := triangle_out
 
 $(TARGET): $(OBJ_FILES)
 	g++ -o $@ $^ $(LDFLAGS)
@@ -16,4 +21,4 @@ run:
 	./$(TARGET)
 
 clean:
-	rm $(TARGET) *.o
+	rm -f $(TARGET) *.o
