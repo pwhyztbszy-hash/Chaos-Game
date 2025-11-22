@@ -115,7 +115,7 @@ int main()
         for(size_t i = 0; i < vertices.size(); i++)
         {
             RectangleShape rectangle(Vector2f(10,10));
-            rectangle.setPosition(vertices[i]);
+            rectangle.setPosition(vertices[i].x, vertices[i].y);
             rectangle.setFillColor(Color::White);
             window.draw(rectangle);
         }
