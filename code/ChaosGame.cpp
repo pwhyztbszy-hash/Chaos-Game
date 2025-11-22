@@ -31,7 +31,10 @@ int main()
     instructions.setString("Click 3 points to place triangle vertices");
 
     vector<Vector2f> vertices;
-    vector<Vector2f> points;
+	vector<Vector2f> points;
+	Vector2f lastPoint;
+	Vector2f randPoint;
+	Vector2f newPoint;
 
     while (window.isOpen())
     {
@@ -129,18 +132,10 @@ int main()
 		 }
 		
 		 ///TODO:  Draw points
-		for(int i = 0; i < vertices.size(); i++)
-		 {
+		Vertex line[] = { Vertex(lastPoint), Vertex(newPoint) };
 
-		 RectangleShape dot(Vector2f(10,10));
-	
-		 dot.setPosition(Vector2f(vertices[i].x, vertices[i].y));
-	
-		 dot.setFillColor(Color::White);
-	
-		 window.draw(dot);
-	
-		 }
+		window.draw(line, 2, Lines);
+		window.display();
 		
 		
 		 window.display();
