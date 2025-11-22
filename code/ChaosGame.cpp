@@ -115,7 +115,7 @@ int main()
         ****************************************
         */
         window.clear();
-		 for(int i = 0; i < vertices.size(); i++)
+		 for(size_t i = 0; i < vertices.size(); i++)
 		 {
 
 		 RectangleShape rect(Vector2f(10,10));
@@ -129,7 +129,7 @@ int main()
 		 }
 		
 		 ///TODO:  Draw points
-		for(int i = 0; i < points.size(); i++)
+		for(size_t i = 0; i < points.size(); i++)
 		 {
 
 		 RectangleShape dot(Vector2f(5,5));
