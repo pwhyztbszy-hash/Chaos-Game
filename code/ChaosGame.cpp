@@ -31,13 +31,14 @@ int main()
     instructions.setString("Click 3 points to place triangle vertices");
 
     vector<Vector2f> vertices;
-	vector<Vector2f> points;
-	Vector2f lastPoint;
-	Vector2f randPoint;
-	Vector2f newPoint;
+    vector<Vector2f> points;
+    Vector2f lastPoint;
+    Vector2f randPoint;
+    Vector2f newPoint;
 
     while (window.isOpen())
     {
+
         /*
         ****************************************
         Handle the player's input
@@ -54,29 +55,29 @@ int main()
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
-            if (event.mouseButton.button == sf::Mouse::Left)
-            {
-                cout << "the left button was pressed" << std::endl;
-                cout << "mouse x: " << event.mouseButton.x << std::endl;
-                cout << "mouse y: " << event.mouseButton.y << std::endl;
-
-                if(vertices.size() < 3)
+                if (event.mouseButton.button == sf::Mouse::Left)
                 {
-                    vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+                    cout << "the left button was pressed" << std::endl;
+                    cout << "mouse x: " << event.mouseButton.x << std::endl;
+                    cout << "mouse y: " << event.mouseButton.y << std::endl;
 
-                    if (vertices.size() == 3)
+                    if (vertices.size() < 3)
                     {
-                        instructions.setString("Click a 4th point to start Chaos Game");
+                        vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+
+                        if (vertices.size() == 3)
+                        {
+                            instructions.setString("Click a 4th point to start Chaos Game");
+                        }
+                    }
+                    else if (points.size() == 0)
+                    {
+                        ///fourth click
+                        ///push back to points vector
+                        points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+                        instructions.setString("Generating Chaos Game...");
                     }
                 }
-                else if(points.size() == 0)
-                {
-                    ///fourth click
-                    ///push back to points vector
-                    points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
-                    instructions.setString("Generating Chaos Game...");
-                }
-            }
             }
         }
 
@@ -87,26 +88,26 @@ int main()
 
         /*
         ****************************************
-        Update 
+        Update
         ****************************************
         */
-        if(points.size() > 0)
+        if (points.size() > 0)
         {
             ///generate more point(s)
-			///select random vertex
-			///calculate midpoint between random vertex and the last point in the vector
-			///push back the newly generated coord.
-			/// 
-			lastPoint = points[points.size() - 1];
+            ///select random vertex
+            ///calculate midpoint between random vertex and the last point in the vector
+            ///push back the newly generated coord.
 
-			randPoint = vertices[rand() % 3];
+            lastPoint = points[points.size() - 1];
 
-			newPoint = {
-				(lastPoint.x + randPoint.x) / 2,
-				(lastPoint.y + randPoint.y) / 2
-			};
+            randPoint = vertices[rand() % 3];
 
-			points.push_back(newPoint);
+            newPoint = {
+                (lastPoint.x + randPoint.x) / 2,
+                (lastPoint.y + randPoint.y) / 2
+            };
+
+            points.push_back(newPoint);
         }
 
         /*
@@ -115,36 +116,56 @@ int main()
         ****************************************
         */
         window.clear();
-		 for(size_t i = 0; i < vertices.size(); i++)
-		 {
 
-		 RectangleShape rect(Vector2f(10,10));
-	
-		 rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
-	
-		 rect.setFillColor(Color::Blue);
-	
-		 window.draw(rect);
-	
-		 }
-		
-		 ///TODO:  Draw points
-		for(size_t i = 0; i < points.size(); i++)
-		 {
+        if (vertices.size() == 3)
+        {
+            ConvexShape shape;
+            shape.setPointCount(vertices.size());
+            shape.setFillColor(Color::Transparent);
+            shape.setOutlineThickness(5.0);
 
-		 RectangleShape dot(Vector2f(5,5));
-	
-		 dot.setPosition(Vector2f(points[i].x, points[i].y));
-	
-		 dot.setFillColor(Color::White);
-	
-		 window.draw(dot);
-	
-		 }
+            for (unsigned int i = 0; i < vertices.size(); i++)
+            {
+                shape.setPoint(i, Vector2f(vertices[i].x, vertices[i].y));
+            }
+
+            window.draw(shape);
+        }
+
+        for (size_t i = 0; i < vertices.size(); i++)
+        {
+
+            RectangleShape rect(Vector2f(10.0, 10.0));
+
+            // - 5.0 each coord to account for offset from shape size (which is 10.0)
+            rect.setPosition(Vector2f(vertices[i].x - 5.0, vertices[i].y - 5.0));
+
+            rect.setFillColor(Color::Blue);
+
+            window.draw(rect);
+
+        }
+        
+
+        ///TODO:  Draw points
+        for (size_t i = 0; i < points.size(); i++)
+        {
+
+            RectangleShape dot(Vector2f(5.0, 5.0));
+
+            // - 2.5 each coord to account for offset from shape size (which is 5.0)
+            dot.setPosition(Vector2f(points[i].x - 2.5, points[i].y - 2.5));
+
+            dot.setFillColor(Color::White);
+
+            window.draw(dot);
+
+        }
 		
-		
-		 window.display();
-		
-		 }
-		
-	}
+        window.draw(instructions);
+
+        window.display();
+
+    }
+
+}
