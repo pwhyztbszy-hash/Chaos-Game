@@ -100,8 +100,8 @@ int main()
 			lastPoint = points[points.size() - 1];
 
 			randPoint = {
-				rand() % 1920 + 1,
-				rand() % 1080 + 1
+				vertices[rand() % 3].x,
+    			vertices[rand() % 3].y
 			};
 
 			newPoint = {
