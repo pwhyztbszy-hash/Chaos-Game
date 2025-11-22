@@ -134,7 +134,7 @@ int main()
 
 		 RectangleShape dot(Vector2f(10,10));
 	
-		 dot.setPosition(Vector2f(vertices[i].x, vertices[i].y));
+		 dot.setPosition(Vector2f(points[i].x, points[i].y));
 	
 		 dot.setFillColor(Color::Blue);
 	
