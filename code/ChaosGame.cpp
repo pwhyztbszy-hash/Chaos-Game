@@ -132,7 +132,7 @@ int main()
 		for(int i = 0; i < points.size(); i++)
 		 {
 
-		 RectangleShape dot(Vector2f(3,3));
+		 RectangleShape dot(Vector2f(5,5));
 	
 		 dot.setPosition(Vector2f(points[i].x, points[i].y));
 	
