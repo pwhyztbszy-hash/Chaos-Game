@@ -103,7 +103,7 @@ int main()
 
 			newPoint = {
 				(lastPoint.x + randPoint.x) / 2,
-				(lastPoint.y + randPoint.x) / 2
+				(lastPoint.y + randPoint.y) / 2
 			};
 
 			points.push_back(newPoint);
