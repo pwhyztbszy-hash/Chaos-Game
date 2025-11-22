@@ -99,10 +99,7 @@ int main()
 			/// 
 			lastPoint = points[points.size() - 1];
 
-			randPoint = {
-				vertices[rand() % 3].x,
-    			vertices[rand() % 3].y
-			};
+			randPoint = vertices[rand() % 3];
 
 			newPoint = {
 				(lastPoint.x + randPoint.x) / 2,
